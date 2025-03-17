@@ -1,0 +1,13 @@
+<h1>Sub-Product Details</h1>
+<img src="{{ sub_product.image.url }}" alt="{{ sub_product.description }}" width="400px">
+<p>{{ sub_product.description }}</p>
+
+<h2>Other Related Images:</h2>
+{% for image in related_images %}
+    <div>
+        <img src="{{ image.image.url }}" alt="{{ image.description }}" width="100px">
+        <a href="{% url 'sub_product_detail' image.id %}">
+            <button>View</button>
+        </a>
+    </div>
+{% endfor %}

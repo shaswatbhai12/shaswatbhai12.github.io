@@ -1,0 +1,39 @@
+{% extends 'home/basic.html' %}
+
+{% block content %}
+<!-- Quick Enquiry Modal -->
+<form method="POST" action="{% url 'quick_enquiry' %}">
+    {% csrf_token %}
+    
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+    
+    <label for="phone">Phone:</label>
+    <input type="text" name="phone" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" name="email">
+
+    <label for="query">Your Query:</label>
+    <textarea name="query" required></textarea>  <!-- ✅ This was missing! -->
+
+    <button type="submit">Submit</button>
+</form>
+
+
+<!-- Quick Enquiry Button -->
+<button onclick="openEnquiry()" class="fixed top-10 right-10 bg-red-600 text-white px-4 py-2 rounded">
+    Quick Enquiry
+</button>
+
+<!-- JavaScript for Modal -->
+<script>
+function openEnquiry() {
+    document.getElementById('quick-enquiry-modal').classList.remove('hidden');
+}
+function closeEnquiry() {
+    document.getElementById('quick-enquiry-modal').classList.add('hidden');
+}
+</script>
+
+{% endblock %}
